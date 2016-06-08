@@ -1,0 +1,38 @@
+/* Justin Carbonara (jmc543)
+ * CS530 project implementation
+ */
+
+.btn-margin-sides {
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.lead{
+    margin-top: 20px;
+}
+
+.btn-xlarge {
+    padding: 18px 28px;
+    font-size: 22px;
+line-height: normal;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    border-radius: 8px;
+}
+
+.jmc-footer {
+    background-color: #f8f8f8;
+}
+
+.jmc-hidden {
+    display:none;
+}
+
+.jmc-warning {
+    color: red;
+    text-align: center;
+    font-style: italic;
+    font-family: Tahoma, fantasy;
+}

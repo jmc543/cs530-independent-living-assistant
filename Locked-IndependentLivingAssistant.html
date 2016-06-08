@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<!-- Justin Carbonara (jmc543) CS530 Project Implementation -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Optimize mobile viewport (html5)-->
+    <title>Independent Living Assistant</title>
+
+    <!-- import bootstrap css -->
+    <link href="dist/bootstrap/css/bootstrap.css" rel="stylesheet">
+
+    <!-- load custom stylesheets to extend/modify bootstrap -->
+    <link href="css/navbar.css" rel="stylesheet">
+    <link href="css/sticky-footer-navbar.css" rel="stylesheet">
+    <link href="css/jmc-custom.css" rel="stylesheet">
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="dist/jquery/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="dist/bootstrap/js/bootstrap.min.js"></script>
+
+    <!-- import application javascript -->
+    <script src="ILA.js"></script>
+
+    <!-- prevent enter key from submitting forms: -->
+    <script type="text/javascript">
+        function noenter() {
+            return !(window.event && window.event.keyCode == 13); }
+    </script>
+</head>
+<body>
+    <!-- Fixed navbar on top of screen -->
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false"  aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="">Independent Living Assistant</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Begin page content -->
+    <div class="container">
+        <p class="lead">Welcome to the Independent Living Assistant!</p>
+        <p class="lead">The system will notify you when action is required.</p>
+        <div id="loginDiv" class="jmc-hidden">
+            <div>Enter password:</div>
+            <input id="passwordInput" class="input-lg" type="password" />
+            <!-- stage login for high-fidelity prototype -->
+            <a href="IndependentLivingAssistant.html" class="btn btn-default btn-lg">Submit</a>
+        </div>
+    </div>
+    <div class="container">
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <ul class="nav navbar-nav">
+                <li class="navbar-btn">
+                    <a class="btn btn-default btn-margin-sides" id="loginButton">
+                        <div>Login for administration</div>
+                        <div class="glyphicon glyphicon-user"></div>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </footer>
+
+</body>
+</html>

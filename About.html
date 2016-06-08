@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<!-- Justin Carbonara (jmc543) CS530 Project Implementation -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Optimize mobile viewport (html5)-->
+    <title>About</title>
+
+    <!-- import bootstrap css -->
+    <link href="dist/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <!-- load custom stylesheets to extend/modify bootstrap -->
+    <link href="css/navbar.css" rel="stylesheet">
+    <link href="css/sticky-footer-navbar.css" rel="stylesheet">
+    <link href="css/jmc-custom.css" rel="stylesheet">
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="dist/jquery/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="dist/bootstrap/js/bootstrap.min.js"></script>
+
+
+    <!-- prevent enter key from submitting forms: -->
+    <script type="text/javascript">
+        function noenter() {
+            return !(window.event && window.event.keyCode == 13); }
+    </script>
+</head>
+<body>
+    <!-- Fixed navbar on top of screen -->
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false"  aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="">Independent Living Assistant</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Begin page content -->
+    <div class="container">
+        <p class="lead">About the Independent Living Assistant application...</p>
+        <p> This application is a vision of an all-encompassing tool to enable and empower those that face difficulties that hinder them from living independently. </p>
+        <p> Although not yet fully implemented, the hope is that this application can be used as a springboard to grow closer to the goal. </p>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <ul class="nav navbar-nav">
+                <li class="navbar-btn">
+                    <a href="IndependentLivingAssistant.html" class="btn btn-default btn-margin-sides">
+                        <div>Independent Living Assistant</div>
+                        <div class="glyphicon glyphicon-home"></div>
+                    </a>
+                </li>
+                <li class="navbar-btn">
+                    <a href="ILAAdministration.html" class="btn btn-default btn-margin-sides">
+                        <div>ILA Administration</div>
+                        <div class="glyphicon glyphicon-cog"></div>
+                    </a>
+                </li>
+
+            </ul>
+        </div>
+    </footer>
+
+</body>
+</html>

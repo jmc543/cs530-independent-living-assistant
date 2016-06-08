@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<!-- Justin Carbonara (jmc543) CS530 Project Implementation -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Optimize mobile viewport (html5)-->
+    <title>ILA Administration</title>
+
+    <!-- import bootstrap  css -->
+    <link href="dist/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <!-- load custom stylesheets to extend/modify bootstrap -->
+    <link href="css/navbar.css" rel="stylesheet">
+    <link href="css/sticky-footer-navbar.css" rel="stylesheet">
+    <link href="css/jmc-custom.css" rel="stylesheet">
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="dist/jquery/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="dist/bootstrap/js/bootstrap.min.js"></script>
+
+    <!-- import application javascript -->
+    <script src="ILA.js"></script>
+
+    <!-- prevent enter key from submitting forms: -->
+    <script type="text/javascript">
+        function noenter() {
+            return !(window.event && window.event.keyCode == 13); }
+    </script>
+</head>
+<body>
+    <!-- Fixed navbar on top of screen -->
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false"  aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="">ILA Administration</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Begin page content -->
+    <div class="container">
+        <p class="lead">Choose administrative task:</p>
+        <button type="button" class="btn btn-default btn-margin-sides btn-xlarge" data-toggle="modal" data-target="#notificationModal">
+            <div>Notification Configuration</div>
+            <div class="glyphicon glyphicon-bell"></div>
+        </button>
+        <p class="lead"> See individual components for component-specific configuration.</p>
+        <p class="lead">Configured notifications:</p>
+        <ul id="notificationsList" class="lead">
+            <li>Virtual Pill Caddy, notification type <span id="vpcNotificationType">{not configured}</span>, snooze duration <span id="vpcSnoozeDuration">{not configured}</span> minutes</li>
+            <li>Meal Scheduler, notification type <span id="mealSchedulerNotificationType">{not configured}</span>, snooze duration <span id="mealSchedulerSnoozeDuration">{not configured}</span> minutes</li>
+            <li>Transit Notifier, notification type <span id="transitNotifierNotificationType">{not configured}</span>, snooze duration <span id="transitNotifierSnoozeDuration">{not configured}</span> minutes</li>
+        </ul>
+    </div>
+    <div class="container">
+    </div>
+
+    <!-- Notification modal popup: -->
+    <div class="modal fade" id="notificationModal" tabindex="-1" role="dialog" aria-labelledby="notificationModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h3 class="modal-title" id="notificationModalLabel">Notification Configuration</h3>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-lg-6">Plugin: </div>
+                        <div class="col-lg-6">
+                            <select id="pluginSelect" class="input-lg">
+                                <option value="">Select a plugin</option>
+                                <option value="virtualPillCaddy">Virtual Pill Caddy</option>
+                                <option value="mealScheduler">Meal Scheduler</option>
+                                <option value="transitNotifier">Transit Notifier</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-6">Notification type: </div>
+                        <div class="col-lg-6">
+                            <select id="notificationSelect" class="input-lg">
+                                <option value="">Select a type</option>
+                                <option value="loudHorn">Loud horn</option>
+                                <option value="buzzer">Buzzer</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-6">Snooze duration [minutes]: </div>
+                        <div class="col-lg-6">
+                            <input id="snoozeInput" class="col-lg-6 input-lg" />
+                        </div>
+                    </div>
+                     <div class="row jmc-hidden testNotificationDivs">
+                        <div class="col-lg-6">Loud horn: </div>
+                        <audio controls class="col-lg-6">
+                            <source src="sounds/loud_horn.mp3">
+                        </audio>
+                    </div>
+                    <div class="row jmc-hidden testNotificationDivs">
+                        <div class="col-lg-6">Buzzer: </div>
+                        <audio controls class="col-lg-6">
+                            <source src="sounds/buzzer.mp3">
+                        </audio>
+                    </div>
+                </div>
+                <div class="jmc-hidden" id="notificationEmptyFieldErrorMsg">
+                    <h2 class="jmc-warning">You must enter all fields!</h2>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                    <button id="testNotificationButton" type="button" class="btn btn-default">Test Notification Types</button>
+                    <button id="notificationSaveButton" type="button" class="btn btn-default">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <footer class="footer">
+        <div class="container">
+            <ul class="nav navbar-nav">
+                <li class="navbar-btn"><a href="IndependentLivingAssistant.html" class="btn btn-default btn-margin-sides"><div>Independent Living Assistant</div><div class="glyphicon glyphicon-home"></div></a></li>
+                <li class="navbar-btn"><a href="About.html" class="btn btn-default btn-margin-sides"><div>About</div><div class="glyphicon glyphicon-info-sign"></div></a></li>
+            </ul>
+        </div>
+    </footer>
+
+</body>
+</html>

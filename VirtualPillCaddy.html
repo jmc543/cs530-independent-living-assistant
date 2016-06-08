@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<!-- Justin Carbonara (jmc543) CS530 Project Implementation -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Optimize mobile viewport (html5)-->
+    <title>Virtual Pill Caddy</title>
+
+    <!-- import bootstrap css -->
+    <link href="dist/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <!-- load custom stylesheets to extend/modify bootstrap -->
+    <link href="css/navbar.css" rel="stylesheet">
+    <link href="css/sticky-footer-navbar.css" rel="stylesheet">
+    <link href="css/jmc-custom.css" rel="stylesheet">
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="dist/jquery/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="dist/bootstrap/js/bootstrap.min.js"></script>
+
+    <!-- import application javascript -->
+    <script src="ILA.js"></script>
+
+
+    <!-- prevent enter key from submitting forms: -->
+    <script type="text/javascript">
+        function noenter() {
+            return !(window.event && window.event.keyCode == 13); }
+    </script>
+</head>
+<body>
+    <!-- Fixed navbar on top of screen -->
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false"  aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="">Virtual Pill Caddy</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Begin page content -->
+    <div class="container">
+        <p class="lead">Choose Virtual Pill Caddy administrative task:</p>
+        <button type="button" class="btn btn-default btn-margin-sides btn-xlarge" data-toggle="modal" data-target="#specifyMedicationModal">
+            <div>Specify Medication</div>
+            <div>Configure Dosage</div>
+            <div>
+                <span class="glyphicon glyphicon-oil"></span>
+                <span class="glyphicon glyphicon-scale"></span>
+            </div>
+        </button>
+        </button>
+        <button type="button" class="btn btn-default btn-margin-sides btn-xlarge" data-toggle="modal" data-target="#managePillCaddyModal">
+            <div>Manage Networked</div>
+            <div>Pill Caddy</div>
+            <div class="glyphicon glyphicon-cloud-download"></div>
+        </button>
+        <p class="lead"> See Independent Living Assistant home page for access to notification configuration. </p>
+        <p class="lead">Configured dosages:</p>
+        <ul id="dosagesList" class="lead">
+        </ul>
+    </div>
+    <div class="container">
+    </div>
+
+    <!-- Modal Popups -->
+    <div class="modal fade" id="specifyMedicationModal" tabindex="-1" role="dialog" aria-labelledby="specifyMedicationModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h3 class="modal-title" id="specifyMedicationModalLabel">Specify Medication</h3>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-lg-6">Medication: </div>
+                        <div class="col-lg-6">
+                            <select id="medicationNameSelect" class="input-lg">
+                                <option value="">Medication name</option>
+                                <option value="Zopraxenorlam">Zopraxenorlam</option>
+                                <option value="Loramipsumpril">Loramipsumpril</option>
+                                <option value="Trensotrazene">Trensotrazene</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-6">Tablets on hand: </div>
+                        <div class="col-lg-6">
+                            <input id="numberOfTabletsInput" class="col-lg-6 input-lg" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-6">Tablet size [mg]: </div>
+                        <div class="col-lg-6">
+                            <input id="tableSizeInput" class="col-lg-6 input-lg" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-6">Dosage days: [e.g.: MWF]</div>
+                        <div class="col-lg-6">
+                            <input id="dosageDaysInput" class="col-lg-6 input-lg" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-6">Dosage times: [e.g.: 7:00,23:30]</div>
+                        <div class="col-lg-6">
+                            <input id="dosageTimesInput" class="col-lg-6 input-lg" />
+                        </div>
+                    </div>
+                </div>
+                <div class="jmc-hidden" id="dosageConfigurationEmptyFieldErrorMsg">
+                    <h2 class="jmc-warning">You must enter all fields!</h2>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-default" id="dosageConfigurationSaveButton">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="managePillCaddyModal" tabindex="-1" role="dialog" aria-labelledby="managePillCaddyModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h3 class="modal-title" id="managePillCaddyModalLabel">Notification Configuration</h3>
+                </div>
+                <div class="modal-body">
+                    <div id="networkConfCancel">
+                        <button type="button" class="btn btn-default btn-margin-sides btn-xlarge" onclick="toggleNetworkConfDivs()">
+                            <div>Scan Network</div>
+                            <div class="glyphicon glyphicon-signal"></div>
+                        </button>
+                        <button type="button" class="btn btn-default btn-margin-sides btn-xlarge" data-dismiss="modal">
+                            <div>Cancel</div>
+                            <div class="glyphicon glyphicon-remove"></div>
+                        </button>
+                    </div>
+                    <div class="jmc-hidden" id="successMsg">
+                        <p class="lead">Successfully connected to pill caddy!</p>
+                        <button type="button" class="btn btn-default btn-margin-sides btn-xlarge" data-dismiss="modal">
+                            OK
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+ <!-- Test notification modal popup: -->
+    <div class="modal fade" id="testNotificationModal" tabindex="-1" role="dialog" aria-labelledby="testNotificationModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h3 class="modal-title" id="testNotificationModalLabel">Time to take your medication!</h3>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <h4 class="alert">It's time to take your <span id="testNotificationMedicationName"></span> <span id="testNotificationTabletSize"></span> mg tablet!</h4>
+                    </div>
+                     <div class="row jmc-hidden" id="loudHornTestNotificationDiv">
+                        <div class="col-lg-6">Loud horn: </div>
+                        <audio loop controls class="col-lg-6" id="testNotificationLoudHornPlayer">
+                            <source src="sounds/loud_horn.mp3">
+                        </audio>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <footer class="footer">
+        <div class="container">
+            <ul class="nav navbar-nav">
+                <li class="navbar-btn"><a href="IndependentLivingAssistant.html" class="btn btn-default btn-margin-sides"><div>Independent Living Assistant</div><div class="glyphicon glyphicon-home"></div></a></li>
+            </ul>
+        </div>
+    </footer>
+
+</body>
+</html>
